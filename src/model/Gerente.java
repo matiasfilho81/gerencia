@@ -1,6 +1,23 @@
+package model;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Gerente extends Funcionario {
+
     private int senha;
     private int numeroDeFuncionarios;
+
+    Date hoje = new Date();
+	SimpleDateFormat sdf;
+
+    public Gerente(String cpf, String nome, String telefone, Date dataNascimento, double salario, int senha, int numero) {
+        super(cpf, nome, telefone, dataNascimento, salario);
+        this.senha = senha;
+        this.numeroDeFuncionarios = numero;
+		this.dataCadastro = hoje;
+		this.dataAlteracao = hoje;
+    }
 
     public boolean autenticar(int senha){
         if(this.senha == senha){
@@ -10,6 +27,11 @@ public class Gerente extends Funcionario {
             System.out.println("Acesso negado!");
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Gerente [numeroDeFuncionarios=" + numeroDeFuncionarios + "]";
     }
 
     public int getSenha() {
@@ -24,6 +46,4 @@ public class Gerente extends Funcionario {
     public void setNumeroDeFuncionarios(int numeroDeFuncionarios) {
         this.numeroDeFuncionarios = numeroDeFuncionarios;
     }
-
-    
 }
